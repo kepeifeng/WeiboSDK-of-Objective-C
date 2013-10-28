@@ -36,7 +36,7 @@ public:
         _cpp = new ParsingHandleOpaque(val->val, isOwner);
     
     }
-
+    return self;
 
 }
 
@@ -47,27 +47,6 @@ public:
     return ;
 }
 
--(BOOL)parse:(NSString *)source{
-
-
-}
-
--(void)resetWithJsonValue:(struct JsonValue *)val isOwner:(BOOL)isOwner{
-
-}
-
--(NSString *)getErrorMessage{
-
-}
-
--(NSString *)getSource{
-
-}
-
--(struct JsonValue *)getValue{
-
-
-}
 
 
 @end

@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0419319E1814DA58007702FB /* AKSDKManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0419319C1814DA58007702FB /* AKSDKManager.h */; };
+		0419319E1814DA58007702FB /* AKSDKManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0419319C1814DA58007702FB /* AKSDKManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0419319F1814DA58007702FB /* AKSDKManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0419319D1814DA58007702FB /* AKSDKManager.mm */; };
-		041931A21814DD07007702FB /* AKWeiboFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 041931A01814DD07007702FB /* AKWeiboFactory.h */; };
+		041931A21814DD07007702FB /* AKWeiboFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 041931A01814DD07007702FB /* AKWeiboFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		041931A31814DD07007702FB /* AKWeiboFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 041931A11814DD07007702FB /* AKWeiboFactory.mm */; };
-		042B5695180FB256009CC479 /* AKVariableParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B5693180FB256009CC479 /* AKVariableParams.h */; };
+		042B5695180FB256009CC479 /* AKVariableParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B5693180FB256009CC479 /* AKVariableParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		042B5696180FB256009CC479 /* AKVariableParams.mm in Sources */ = {isa = PBXBuildFile; fileRef = 042B5694180FB256009CC479 /* AKVariableParams.mm */; };
-		042B5699180FB332009CC479 /* AKID.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B5697180FB332009CC479 /* AKID.h */; };
+		042B5699180FB332009CC479 /* AKID.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B5697180FB332009CC479 /* AKID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		042B569A180FB332009CC479 /* AKID.mm in Sources */ = {isa = PBXBuildFile; fileRef = 042B5698180FB332009CC479 /* AKID.mm */; };
-		042B569D180FB887009CC479 /* AKWeiboDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B569B180FB887009CC479 /* AKWeiboDef.h */; };
+		042B569D180FB887009CC479 /* AKWeiboDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 042B569B180FB887009CC479 /* AKWeiboDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		042B569E180FB887009CC479 /* AKWeiboDef.mm in Sources */ = {isa = PBXBuildFile; fileRef = 042B569C180FB887009CC479 /* AKWeiboDef.mm */; };
-		0458D1501810E0280025D660 /* AKWeiboMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D14E1810E0280025D660 /* AKWeiboMethod.h */; };
+		0458D1501810E0280025D660 /* AKWeiboMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D14E1810E0280025D660 /* AKWeiboMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0458D1511810E0280025D660 /* AKWeiboMethod.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D14F1810E0280025D660 /* AKWeiboMethod.mm */; };
-		0458D1541810F46B0025D660 /* AKWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D1521810F46B0025D660 /* AKWeibo.h */; };
+		0458D1541810F46B0025D660 /* AKWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D1521810F46B0025D660 /* AKWeibo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0458D1551810F46B0025D660 /* AKWeibo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D1531810F46B0025D660 /* AKWeibo.mm */; };
-		0458D1581810FC8E0025D660 /* AKParsingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D1561810FC8E0025D660 /* AKParsingObject.h */; };
+		0458D1581810FC8E0025D660 /* AKParsingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D1561810FC8E0025D660 /* AKParsingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0458D1591810FC8E0025D660 /* AKParsingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D1571810FC8E0025D660 /* AKParsingObject.mm */; };
-		0458D15C1811061A0025D660 /* AKParsingHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D15A1811061A0025D660 /* AKParsingHandle.h */; };
+		0458D15C1811061A0025D660 /* AKParsingHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D15A1811061A0025D660 /* AKParsingHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0458D15D1811061A0025D660 /* AKParsingHandle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D15B1811061A0025D660 /* AKParsingHandle.mm */; };
 		C06BAFB714E231C5005172A9 /* compat.hxx in Headers */ = {isa = PBXBuildFile; fileRef = C06BAFB214E231C4005172A9 /* compat.hxx */; settings = {ATTRIBUTES = (); }; };
 		C06BAFB814E231C5005172A9 /* IWeibo.hxx in Headers */ = {isa = PBXBuildFile; fileRef = C06BAFB314E231C4005172A9 /* IWeibo.hxx */; settings = {ATTRIBUTES = (); }; };
@@ -238,29 +238,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06BAFB714E231C5005172A9 /* compat.hxx in Headers */,
-				C06BAFB814E231C5005172A9 /* IWeibo.hxx in Headers */,
-				C06BAFB914E231C5005172A9 /* IWeiboDef.hxx in Headers */,
 				042B5699180FB332009CC479 /* AKID.h in Headers */,
-				C06BAFBA14E231C5005172A9 /* IWeiboMethod.hxx in Headers */,
 				0458D15C1811061A0025D660 /* AKParsingHandle.h in Headers */,
 				0458D1581810FC8E0025D660 /* AKParsingObject.h in Headers */,
 				0419319E1814DA58007702FB /* AKSDKManager.h in Headers */,
 				041931A21814DD07007702FB /* AKWeiboFactory.h in Headers */,
 				0458D1541810F46B0025D660 /* AKWeibo.h in Headers */,
+				0458D1501810E0280025D660 /* AKWeiboMethod.h in Headers */,
+				042B5695180FB256009CC479 /* AKVariableParams.h in Headers */,
+				042B569D180FB887009CC479 /* AKWeiboDef.h in Headers */,
+				C06BAFB714E231C5005172A9 /* compat.hxx in Headers */,
+				C06BAFB814E231C5005172A9 /* IWeibo.hxx in Headers */,
+				C06BAFB914E231C5005172A9 /* IWeiboDef.hxx in Headers */,
+				C06BAFBA14E231C5005172A9 /* IWeiboMethod.hxx in Headers */,
 				C06BAFBB14E231C5005172A9 /* ParsingObject.hxx in Headers */,
 				C06BAFD914E231D8005172A9 /* config.h in Headers */,
 				C06BAFDB14E231D8005172A9 /* ParsingHandle.hxx in Headers */,
 				C06BAFDE14E231D8005172A9 /* SDKHelper.hxx in Headers */,
 				C06BAFE014E231D8005172A9 /* SDKManager.hxx in Headers */,
-				0458D1501810E0280025D660 /* AKWeiboMethod.h in Headers */,
 				C06BAFE214E231D8005172A9 /* SDKMethodImpl.hxx in Headers */,
 				C06BAFE314E231D8005172A9 /* SDKRequest.hxx in Headers */,
 				C0FAC16F14E281BC00480D70 /* bbiconv.h in Headers */,
 				C0FAC17114E281BC00480D70 /* strconv.h in Headers */,
 				C0FAC17314E281BC00480D70 /* Urlcode.h in Headers */,
-				042B5695180FB256009CC479 /* AKVariableParams.h in Headers */,
-				042B569D180FB887009CC479 /* AKWeiboDef.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +401,7 @@
 		C0C6576614E2308D00C9B8C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(SRCROOT)/../";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -411,7 +412,8 @@
 					"$(SRCROOT)/../third-party/include/libutil",
 					"$(SRCROOT)/../third-party/common",
 				);
-				INSTALL_PATH = "/lib/iOS/$(CURRENT_ARCH)";
+				INSTALL_PATH = "/lib/MacOS/$(CURRENT_ARCH)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /include;
@@ -424,6 +426,7 @@
 		C0C6576714E2308D00C9B8C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(SRCROOT)/../";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -434,7 +437,8 @@
 					"$(SRCROOT)/../third-party/include/libutil",
 					"$(SRCROOT)/../third-party/common",
 				);
-				INSTALL_PATH = "/lib/iOS/$(CURRENT_ARCH)";
+				INSTALL_PATH = "/lib/MacOS/$(CURRENT_ARCH)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /include;

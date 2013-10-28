@@ -8,6 +8,6 @@
 
 #import "AKWeibo.h"
 
-@implementation AKWeibo
-
-@end
+//@implementation AKWeibo
+//
+//@end
