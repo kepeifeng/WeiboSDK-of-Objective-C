@@ -48,7 +48,7 @@ struct AKUserTaskInfoOpaque{
 
 -(void *)getCore{
 
-    return &userTaskInfoOpaque->cpp;
+    return userTaskInfoOpaque->cpp;
 
 }
 @end
@@ -74,7 +74,7 @@ struct AKBasicInfoOpaque{
 
 -(void *)getCore{
 
-    return &basicInfoOpaque->cpp;
+    return basicInfoOpaque->cpp;
 
 }
 
@@ -396,7 +396,7 @@ struct AKEducationInfoOpaque{
 
 -(void *)getCore{
 
-    return &educationInfoOpaque->cpp;
+    return educationInfoOpaque->cpp;
 
 }
 
@@ -499,7 +499,7 @@ struct AKCareerInfoOpaque{
 
 -(void *)getCore{
 
-    return &careerInfoOpaque->cpp;
+    return careerInfoOpaque->cpp;
 
 }
 

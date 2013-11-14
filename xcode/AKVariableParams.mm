@@ -38,7 +38,7 @@ public:
 
 -(void *)getCore{
 
-    return &variableParamsOpaque->cpp;
+    return variableParamsOpaque->cpp;
 
 }
 

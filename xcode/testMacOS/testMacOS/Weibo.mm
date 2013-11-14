@@ -40,7 +40,7 @@
     
     [weibo startUp];
     [weibo setConsumer:clientID secret:@"57663124f7eb21e1207a2ee09fed507b"];
-    [weibo setAccessToken:@"2.00LYcB1CwuHMpB9f84030e60kyyn9D"];
+    [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
     
     //https://api.weibo.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI
     //https://api.weibo.com/oauth2/access_token?client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=authorization_code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI&code=CODE
@@ -56,8 +56,10 @@
 
     [NSThread sleepForTimeInterval:5];
     
-    [method postStatusesUpdate:@"can you get this message?" var:nil pTask:nil];
-
+    NSString *status = @"Never turn around as the longest road has its end. Do be cheerful for the happiest heart has its sorrow. ——再长的路都有尽头，千万不要回头；再快乐的心都有烦恼，千万不要在意";
+    [method postStatusesUpdate:[status stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] var:nil pTask:nil];
+    
+    //[method getUsersShow:[[AKID alloc] initWithIdType:AKIDTypeID text:@"1672616342" key:nil] extend:@"" var:nil pTask:nil];
     [NSThread sleepForTimeInterval:5];
     
     [weibo stopAll];
@@ -68,6 +70,10 @@
 
 -(void)OnDelegateComplated:(id<AKWeibo>)weibo methodOption:(NSUInteger)methodOption httpHeader:(NSString *)httpHeader result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
 
+    //[self printParsingObject:result];
+    NSDictionary *dictionary = [result getDictionaryObject];
+    NSLog(@"dictionary = %@",dictionary);
+    //NSLog(@"Origin Source = %@",[result getOriginString]);
     if (methodOption == WBOPT_OAUTH2_ACCESS_TOKEN)
     {
         if (result.isUseable)

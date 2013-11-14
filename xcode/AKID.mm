@@ -13,7 +13,9 @@ using namespace weibo;
 
 struct AKIDOpaque{
 
-    AKIDOpaque():cpp(){};
+    AKIDOpaque(){cpp = new weibo::ID(weibo::ID::IDT_ID,NULL,NULL);};
+    //AKIDOpaque(ID::IDType type, const char *text, const char* key = NULL):cpp(){};
+    
     ID *cpp;
     
 
@@ -35,9 +37,20 @@ struct AKIDOpaque{
     self = [super init];
     if (self) {
         idOpaque = new AKIDOpaque();
-        idOpaque->cpp->idType = (ID::IDType)type;
+        switch (type) {
+            case AKIDTypeID:
+                idOpaque->cpp->idType = weibo::ID::IDT_ID;
+                break;
+            case AKIDTypeScreenname:
+                idOpaque->cpp->idType = weibo::ID::IDT_SCREENNAME;
+            default:
+                break;
+        }
+      
+        
+//        idOpaque->cpp->idType = static_cast<ID::IDType>(0);
         idOpaque->cpp->id = std::string([aID UTF8String]);
-        idOpaque->cpp->keyName = std::string([aKey UTF8String]);
+        idOpaque->cpp->keyName = aKey?std::string([aKey UTF8String]):"";
         
         
     }
@@ -47,7 +60,7 @@ struct AKIDOpaque{
 
 -(void *)getCore{
 
-    return &idOpaque->cpp;
+    return idOpaque->cpp;
 
 }
 

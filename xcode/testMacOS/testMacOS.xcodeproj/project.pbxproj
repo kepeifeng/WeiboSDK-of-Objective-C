@@ -14,7 +14,7 @@
 		0410B9A71818F272000432BA /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0410B9A61818F272000432BA /* libcurl.dylib */; };
 		0410B9A91818F2AB000432BA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0410B9A81818F2AB000432BA /* libz.dylib */; };
 		0410B9AC18192426000432BA /* Weibo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0410B9AB18192426000432BA /* Weibo.mm */; };
-		04C154A3181A1FA900D7DF4C /* libweibosdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C154A2181A1FA900D7DF4C /* libweibosdk.a */; };
+		0461B18218334DC00054D47C /* libweibosdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0461B18118334DC00054D47C /* libweibosdk.a */; };
 		04C154A5181A1FB200D7DF4C /* libHttpEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C154A4181A1FB200D7DF4C /* libHttpEngine.a */; };
 		04C154AD181A224500D7DF4C /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C154AC181A224500D7DF4C /* libjson.a */; };
 		04C154AF181A315C00D7DF4C /* libutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C154AE181A315C00D7DF4C /* libutil.a */; };
@@ -65,8 +65,7 @@
 		0410B9A81818F2AB000432BA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0410B9AA18192426000432BA /* Weibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weibo.h; sourceTree = "<group>"; };
 		0410B9AB18192426000432BA /* Weibo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Weibo.mm; sourceTree = "<group>"; };
-		04C1549A181A066C00D7DF4C /* libutil.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libutil.dylib; path = usr/lib/libutil.dylib; sourceTree = SDKROOT; };
-		04C154A2181A1FA900D7DF4C /* libweibosdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libweibosdk.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/weibo-sdk-fbyltvljgiucxlayzogwlptlyryf/Build/Products/Debug/libweibosdk.a"; sourceTree = "<group>"; };
+		0461B18118334DC00054D47C /* libweibosdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libweibosdk.a; path = ../../lib/MacOS/x86_64/libweibosdk.a; sourceTree = "<group>"; };
 		04C154A4181A1FB200D7DF4C /* libHttpEngine.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHttpEngine.a; path = "../../third-party/lib/MacOS/libHttpEngine.a"; sourceTree = "<group>"; };
 		04C154AC181A224500D7DF4C /* libjson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjson.a; path = "../../../weibo-sdk-util/lib/MacOS/libjson.a"; sourceTree = "<group>"; };
 		04C154AE181A315C00D7DF4C /* libutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libutil.a; path = "../../third-party/lib/MacOS/libutil.a"; sourceTree = "<group>"; };
@@ -99,10 +98,10 @@
 				04C154AF181A315C00D7DF4C /* libutil.a in Frameworks */,
 				0410B9A71818F272000432BA /* libcurl.dylib in Frameworks */,
 				04C154AD181A224500D7DF4C /* libjson.a in Frameworks */,
+				0461B18218334DC00054D47C /* libweibosdk.a in Frameworks */,
 				04C154A5181A1FB200D7DF4C /* libHttpEngine.a in Frameworks */,
 				0410B9A91818F2AB000432BA /* libz.dylib in Frameworks */,
 				0410B9A51818EF54000432BA /* libiconv.2.4.0.dylib in Frameworks */,
-				04C154A3181A1FA900D7DF4C /* libweibosdk.a in Frameworks */,
 				0410B9951818D1F5000432BA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,11 +153,10 @@
 				04C154AE181A315C00D7DF4C /* libutil.a */,
 				04C154AC181A224500D7DF4C /* libjson.a */,
 				04C154A4181A1FB200D7DF4C /* libHttpEngine.a */,
-				04C1549A181A066C00D7DF4C /* libutil.dylib */,
 				0410B9A81818F2AB000432BA /* libz.dylib */,
 				0410B9A61818F272000432BA /* libcurl.dylib */,
 				0410B9A41818EF54000432BA /* libiconv.2.4.0.dylib */,
-				04C154A2181A1FA900D7DF4C /* libweibosdk.a */,
+				0461B18118334DC00054D47C /* libweibosdk.a */,
 				0410B9941818D1F5000432BA /* Foundation.framework */,
 				04C154B5181A4B2400D7DF4C /* Cocoa.framework */,
 				04C154D4181A4B2400D7DF4C /* XCTest.framework */,
@@ -641,6 +639,7 @@
 				04C154E3181A4B2400D7DF4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04C154E4181A4B2400D7DF4C /* Build configuration list for PBXNativeTarget "WeiboClientTests" */ = {
 			isa = XCConfigurationList;
@@ -649,6 +648,7 @@
 				04C154E6181A4B2400D7DF4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

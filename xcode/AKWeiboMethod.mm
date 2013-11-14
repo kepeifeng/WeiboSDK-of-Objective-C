@@ -330,7 +330,11 @@ struct AKWeiboMethodOpaque{
 // 用户读取
 -(AKWeiboResultCode) getUsersShow:(AKID *)usrId extend:(NSString *)extend var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask{
 
-    return _weiboMethod->cpp->getUsersShow(*((ID *)[usrId getCore]), [extend UTF8String], (VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);}
+    void *something = [usrId getCore];
+    //NSLog(@"%@",[usrId getCore]);
+    ID &userID = *(ID *)[usrId getCore];
+    return _weiboMethod->cpp->getUsersShow(userID, [extend UTF8String], (VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);
+}
 
 -(AKWeiboResultCode) getUsersDomainShow:(NSString *) domain  extend:(NSString *)extend  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask{
 

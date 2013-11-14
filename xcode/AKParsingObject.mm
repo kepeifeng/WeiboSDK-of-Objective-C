@@ -44,6 +44,7 @@ public:
     
 }
 
+
 -(id)initWithObject:(void *)object{
 
     self = [super init];
@@ -173,12 +174,82 @@ public:
     
 }
 
-@end
+-(NSDictionary *)getDictionaryObject{
+    
+    NSString *originString = [self getOriginString];
+    if(originString.length>0 && ![originString hasSuffix:@"}"]){
+    
+        NSRange jsonShouldEndAt = [originString rangeOfString:@"}" options:NSBackwardsSearch];
+        originString = [originString substringToIndex:jsonShouldEndAt.location+jsonShouldEndAt.length];
+    
+    }
+    NSData *returnedData = [originString dataUsingEncoding:NSUnicodeStringEncoding];
+    //NSLog(@"%@",originString);
+    //NSString *string = [self getOriginString];
+    
+    
+    // probably check here that returnedData isn't nil; attempting
+    // NSJSONSerialization with nil data raises an exception, and who
+    // knows how your third-party library intends to react?
+    NSDictionary *dictionary;
+    
+    if(NSClassFromString(@"NSJSONSerialization"))
+    {
+        NSError *error = nil;
+        
+        id object = [NSJSONSerialization
+                     JSONObjectWithData:returnedData
+                     options:0
+                     error:&error];
+        
+        if(error) { /* JSON was malformed, act appropriately here */ }
+        
+        // the originating poster wants to deal with dictionaries;
+        // assuming you do too then something like this is the first
+        // validation step:
+        if([object isKindOfClass:[NSDictionary class]])
+        {
+            dictionary =(NSDictionary *) object;
+            /* proceed with results as you like; the assignment to
+             an explicit NSDictionary * is artificial step to get
+             compile-time checking from here on down (and better autocompletion
+             when editing). You could have just made object an NSDictionary *
+             in the first place but stylistically you might prefer to keep
+             the question of type open until it's confirmed */
+        }
+        else
+        {
+            /* there's no guarantee that the outermost object in a JSON
+             packet will be a dictionary; if we get here then it wasn't,
+             so 'object' shouldn't be treated as an NSDictionary; probably
+             you need to report a suitable error condition */
+        }
+    }
+    else
+    {
+        // the user is using iOS 4; we'll need to use a third-party solution.
+        // If you don't intend to support iOS 4 then get rid of this entire
+        // conditional and just jump straight to
+        // NSError *error = nil;
+        // [NSJSONSerialization JSONObjectWithData:...
+    }
+    
 
-void enumAllSubCallback2(const boost::shared_ptr<ParsingObject> object, void* usrData){
+    return dictionary;
+//    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]initWithCapacity:20];
+//    _cpp->parsingObject.enumAllSub(enumAllSubCallback, (__bridge void*)dictionary);
+//    return dictionary;
+}
 
+static void enumAllSubCallback(const boost::shared_ptr<ParsingObject> object, void* usrData){
+    
+    NSLog(@"%@",[NSString stringWithUTF8String:object->getKeyName().c_str()]);
     
 }
+
+@end
+
+
 
 
 
