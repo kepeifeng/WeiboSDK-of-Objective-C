@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
+
 @interface WeiboClientTests : XCTestCase
 
 @end
@@ -26,9 +27,12 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+-(void)testAKVariableParams{
+    
+    NSString *source = @"";
+    AKParsingObject *obj = [[AKParsingObject alloc]initWithSource:source];
+    
+    
+    
 }
-
 @end

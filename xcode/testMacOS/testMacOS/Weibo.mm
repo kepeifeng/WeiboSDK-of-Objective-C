@@ -1,3 +1,4 @@
+
 //
 //  Weibo.m
 //  testMacOS
@@ -36,45 +37,48 @@
     [weibo setDelegate:self];
     
     NSString *clientID = @"1672616342";
-    NSString *redirectURL = @"http://coffeeandsandwich.com/pinwill/authorize.php";
+    NSString *redirectURL = @"http://coffeeandsandwich.com/pinwheel/authorize.php";
     
     [weibo startUp];
     [weibo setConsumer:clientID secret:@"57663124f7eb21e1207a2ee09fed507b"];
     [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
-    
-    //https://api.weibo.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI
-    //https://api.weibo.com/oauth2/access_token?client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=authorization_code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI&code=CODE
 
-    
     //NSString *authorizeURL =[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&response_type=code&redirect_uri=%@", clientID, redirectURL];
     //[[NSWorkspace sharedWorkspace]openURL:[NSURL URLWithString:authorizeURL]];
     
     id<AKWeiboMethodProtocol> method = [weibo getMethod];
     
-    //[method oauth2Code:@"84f2dc2b14d64160dd0b39b01d572604" url:redirectURL pTask:nil];
+    //[method oauth2Code:@"b337dee2e7fcaac6411e1a166d826684" url:redirectURL pTask:nil];
     
 
-    [NSThread sleepForTimeInterval:5];
+    //[NSThread sleepForTimeInterval:5];
     
-    NSString *status = @"Never turn around as the longest road has its end. Do be cheerful for the happiest heart has its sorrow. ——再长的路都有尽头，千万不要回头；再快乐的心都有烦恼，千万不要在意";
-    [method postStatusesUpdate:[status stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] var:nil pTask:nil];
+    //NSString *status = @"Never turn around as the longest road has its end. Do be cheerful for the happiest heart has its sorrow. ——再长的路都有尽头，千万不要回头；再快乐的心都有烦恼，千万不要在意";
+    //[method postStatusesUpdate:[status stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] var:nil pTask:nil];
+    
+    [method getStatusesHomeTimeline:nil pTask:nil];
     
     //[method getUsersShow:[[AKID alloc] initWithIdType:AKIDTypeID text:@"1672616342" key:nil] extend:@"" var:nil pTask:nil];
-    [NSThread sleepForTimeInterval:5];
+    //[NSThread sleepForTimeInterval:5];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
     
-    [weibo stopAll];
-    [weibo shutDown];
+//    [weibo stopAll];
+//    [weibo shutDown];
     
 }
 
 
--(void)OnDelegateComplated:(id<AKWeibo>)weibo methodOption:(NSUInteger)methodOption httpHeader:(NSString *)httpHeader result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
+-(void)OnDelegateCompleted:(id<AKWeibo>)weibo methodOption:(NSUInteger)methodOption httpHeader:(NSString *)httpHeader result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
 
+    [[NSFileManager defaultManager] createFileAtPath:@"/Users/kent/Desktop/data(NSURLConnection).json" contents:result.originData attributes:nil];
+    //return;
+    
+    
     //[self printParsingObject:result];
-    NSDictionary *dictionary = [result getDictionaryObject];
-    NSLog(@"dictionary = %@",dictionary);
+    //NSDictionary *dictionary = [result getDictionaryObject];
+//    NSLog(@"dictionary = %@",dictionary);
     //NSLog(@"Origin Source = %@",[result getOriginString]);
-    if (methodOption == WBOPT_OAUTH2_ACCESS_TOKEN)
+    if (methodOption == AKWBOPT_OAUTH2_ACCESS_TOKEN)
     {
         if (result.isUseable)
         {
@@ -87,11 +91,20 @@
             
         }
     }
-    else if (methodOption == WBOPT_POST_STATUSES_UPDATE)
+    else if (methodOption == AKWBOPT_POST_STATUSES_UPDATE)
     {
         // Send weibo successed!
         // ...
         NSLog(@"Weibo Send.");
+    }
+    
+    else if (methodOption == AKWBOPT_GET_STATUSES_HOME_TIMELINE){
+        
+        NSLog(@"AKWBOPT_GET_STATUSES_HOME_TIMELINE");
+        
+        //[[NSFileManager defaultManager] createFileAtPath:@"/Users/kent/Desktop/statuses.txt" contents:[[result getOriginString] dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+    
+    
     }
 
 
@@ -101,7 +114,7 @@
 -(void)OnDelegateErrored:(id<AKWeibo>)weibo methodOption:(NSUInteger)methodOption errCode:(NSInteger)errCode subErrCode:(NSInteger)subErrCode result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
     
     // Please reference http://open.weibo.com/wiki/Help/error
-    if (methodOption == WBOPT_OAUTH2_ACCESS_TOKEN)
+    if (methodOption == AKWBOPT_OAUTH2_ACCESS_TOKEN)
     {
         if (result && result.isUseable)
         {
@@ -110,10 +123,12 @@
             NSString * request = [result getSubStringByKey:@"request"];
             NSString * error = [result getSubStringByKey:@"error"];
             
+            //[error compare:@"" options:NSCaseInsensitiveSearch]
+            
             NSLog(@"ERROR_CODE = %@\nREQUEST = %@\nERROR = %@",error_code, request, error);
         }
     }
-    else if (methodOption == WBOPT_POST_STATUSES_UPDATE)
+    else if (methodOption == AKWBOPT_POST_STATUSES_UPDATE)
     {
         // Send weibo failed!
         // ...

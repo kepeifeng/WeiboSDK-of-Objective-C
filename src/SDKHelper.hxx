@@ -20,7 +20,7 @@ namespace weibo
 		ParamEncoded 		= (ParamEncodedName| ParamEncodedValue),	//!< The parameter's name and value are URL-Encoded strings.
 		//!  This means that the parameter's name and value are not encoded using URL-encoding
 		//!  before sending to the web server when the HTTP GET or POST is started.
-		/*/< Õâ¸ö²ÎÊýÐèÒª UTF8±àÂë**/
+		/*/< è¿™ä¸ªå‚æ•°éœ€è¦ UTF8ç¼–ç **/
 		ParamUTF8Name       = 0x0000008,
 
 		ParamUTF8Value      = 0x0000010 /***/

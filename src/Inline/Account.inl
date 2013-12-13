@@ -77,8 +77,7 @@ eWeiboResultCode SDKMethodImpl::getAccountGetPrivacy(UserTaskInfo* pTask)
 	return internalEnqueue(ptr);
 }
 
-eWeiboResultCode SDKMethodImpl::getAccountProfileSchoolList(const int province, const int city, const int area, const int type, 
-													 const char* capital, const char* keyword, const int counts, UserTaskInfo* pTask)
+eWeiboResultCode SDKMethodImpl::getAccountProfileSchoolList(const int province, const int city, const int area, const int type, const char* capital, const char* keyword, const int counts, UserTaskInfo* pTask)
 {
 	std::string param;
 	SDKHelper::setIntParam(param, "&province", province);
@@ -231,8 +230,7 @@ eWeiboResultCode SDKMethodImpl::postAccountAvatarUpload(const char* filePath, Us
 	return internalEnqueue(ptr);
 }
 
-eWeiboResultCode SDKMethodImpl::postAccountUpdatePrivacy(const int comment, const int geo, const int message, const int realname, 
-														 const int badge, const int mobile, UserTaskInfo* pTask)
+eWeiboResultCode SDKMethodImpl::postAccountUpdatePrivacy(const int comment, const int geo, const int message, const int realname,  const int badge, const int mobile, UserTaskInfo* pTask)
 {
 	std::string param;
 

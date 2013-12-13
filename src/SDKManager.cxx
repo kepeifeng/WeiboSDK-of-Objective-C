@@ -6,6 +6,8 @@
 #include "SDKHelper.hxx"
 #include "ParsingObject.hxx"
 #include "strconv.h"
+#include <iostream>
+#include <fstream>
 
 #if defined(INTERNAL_INTERFACE_USEABLE)
 #	include "Internal/SDKInternalMethod.hxx"
@@ -314,11 +316,21 @@ unsigned int SDKManager::onRequestReadAction(unsigned int requestId, void* data,
 	}
 	return 0;
 }
-
+int file_index = 0;
 unsigned int SDKManager::onRequestWriteAction(unsigned int requestId, void* data, unsigned int dataSize, const int dataCounts
 											  , unsigned int errorCode, const int subErrorCode, void* userData)
 {
-	WeiboRequestPtr requestPtr = 
+    
+    ofstream myfile("/Users/kent/Desktop/log/data_"+std::to_string(file_index)+".txt");
+    
+    if (myfile.is_open())
+    {
+        file_index++;
+        myfile << (const char*)data;
+        myfile.close();
+    }
+    
+	WeiboRequestPtr requestPtr =
 		internalFindRequestFromActiveMap(requestId);
 
 	if (requestPtr && data)
@@ -331,6 +343,7 @@ unsigned int SDKManager::onRequestWriteAction(unsigned int requestId, void* data
 		ErrLog(<< __FUNCTION__ << "| Request ptr is not at actived map, or data == NULL!");
 	}
 	return dataSize * dataCounts;
+//    return (unsigned)strlen((const char*)data);
 }
 
 unsigned int SDKManager::onRequestHeaderAction(unsigned int requestId, void* data, unsigned int dataSize, const int dataCounts
@@ -473,6 +486,13 @@ void SDKManager::onRequestComplated(unsigned int requestId, const int errorCode,
 
 	if (requestPtr)
 	{
+        ofstream myfile("/Users/kent/Desktop/mResponseBody.txt");
+        if (myfile.is_open())
+        {
+            myfile << requestPtr->mResponseBody.c_str();
+            myfile.close();
+        }
+        
 		ParsingObject result(requestPtr->mResponseBody.c_str());
 		OnDelegateComplated(requestPtr->mOptionId, requestPtr->mResponseHeader.c_str(), &result, &requestPtr->mTaskInfo);
 

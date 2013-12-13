@@ -18,7 +18,7 @@ using namespace weibo;
 #pragma mark - Wrapper for UserTaskInfo
 struct AKUserTaskInfoOpaque{
 
-    AKUserTaskInfoOpaque():cpp(){};
+    AKUserTaskInfoOpaque(){cpp = new UserTaskInfo();};
     AKUserTaskInfoOpaque(UserTaskInfo *userTaskInfo){cpp = userTaskInfo;};
     UserTaskInfo *cpp;
     
@@ -51,12 +51,22 @@ struct AKUserTaskInfoOpaque{
     return userTaskInfoOpaque->cpp;
 
 }
+
+-(id)copyWithZone:(NSZone *)zone{
+
+    AKUserTaskInfo *newTaskInfo = [[AKUserTaskInfo alloc]init];
+    newTaskInfo.taskId = self.taskId;
+    newTaskInfo.userData = self.userData;
+
+    return newTaskInfo;
+}
+
 @end
 
 #pragma mark - Wrapper for BasicInfoOpaque
 struct AKBasicInfoOpaque{
     
-    AKBasicInfoOpaque():cpp(){};
+    AKBasicInfoOpaque(){cpp = new BasicInfo();};
     BasicInfo *cpp;
     
 };
@@ -377,7 +387,7 @@ struct AKBasicInfoOpaque{
 #pragma mark - Wrapper for EducationInfo
 struct AKEducationInfoOpaque{
     
-    AKEducationInfoOpaque():cpp(){};
+    AKEducationInfoOpaque(){cpp = new EducationInfo();};
     EducationInfo *cpp;
 
 };
@@ -480,7 +490,7 @@ struct AKEducationInfoOpaque{
 #pragma mark - Wrapper for CareerInfo
 struct AKCareerInfoOpaque{
 
-    AKCareerInfoOpaque():cpp(){};
+    AKCareerInfoOpaque(){cpp = new CareerInfo();};
     CareerInfo *cpp;
 
 };

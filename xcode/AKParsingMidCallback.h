@@ -29,7 +29,7 @@ public:
     void enumAllSub(void* usrData);
     void enumAllSubCallback(const boost::shared_ptr<ParsingObject> object, void* usrData);
     
-    static void OnDelegateComplated(unsigned int methodOption, const char* httpHeader, ParsingObject* result, const UserTaskInfo* pTask);
+    static void OnDelegateCompleted(unsigned int methodOption, const char* httpHeader, ParsingObject* result, const UserTaskInfo* pTask);
     static void OnDelegateErrored(unsigned int methodOption, const int errCode, const int subErrCode, ParsingObject* result, const UserTaskInfo* pTask);
     static void OnDelegateWillRelease(unsigned int methodOption, const UserTaskInfo* pTask);
     

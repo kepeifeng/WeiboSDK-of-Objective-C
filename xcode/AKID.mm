@@ -23,6 +23,8 @@ struct AKIDOpaque{
 
 @implementation AKID
 
+@synthesize idType = _idType;
+
 - (id)init
 {
     self = [super init];
@@ -36,6 +38,7 @@ struct AKIDOpaque{
 
     self = [super init];
     if (self) {
+        /*
         idOpaque = new AKIDOpaque();
         switch (type) {
             case AKIDTypeID:
@@ -51,11 +54,20 @@ struct AKIDOpaque{
 //        idOpaque->cpp->idType = static_cast<ID::IDType>(0);
         idOpaque->cpp->id = std::string([aID UTF8String]);
         idOpaque->cpp->keyName = aKey?std::string([aKey UTF8String]):"";
-        
+        */
+        self.idType = type;
+        self.ID = aID;
+        self.keyName = aKey;
         
     }
     return self;
 
+}
+
+-(BOOL)isEmpty{
+
+    return !(self.ID);
+    
 }
 
 -(void *)getCore{

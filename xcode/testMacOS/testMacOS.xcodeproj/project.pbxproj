@@ -510,7 +510,10 @@
 					"/Users/mac/Downloads/jsoncpp-src-0.6.0-rc2/libs/linux-gcc-4.2.1",
 					"/Users/mac/Documents/Projects/GIT/weibo-sdk-util/lib/MacOS",
 				);
-				OTHER_LDFLAGS = "-lweibosdk";
+				OTHER_LDFLAGS = (
+					"-lweibosdk",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -536,7 +539,10 @@
 					"/Users/mac/Downloads/jsoncpp-src-0.6.0-rc2/libs/linux-gcc-4.2.1",
 					"/Users/mac/Documents/Projects/GIT/weibo-sdk-util/lib/MacOS",
 				);
-				OTHER_LDFLAGS = "-lweibosdk";
+				OTHER_LDFLAGS = (
+					"-lweibosdk",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

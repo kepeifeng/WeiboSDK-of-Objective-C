@@ -25,6 +25,12 @@
 		0458D1591810FC8E0025D660 /* AKParsingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D1571810FC8E0025D660 /* AKParsingObject.mm */; };
 		0458D15C1811061A0025D660 /* AKParsingHandle.h in Headers */ = {isa = PBXBuildFile; fileRef = 0458D15A1811061A0025D660 /* AKParsingHandle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0458D15D1811061A0025D660 /* AKParsingHandle.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0458D15B1811061A0025D660 /* AKParsingHandle.mm */; };
+		3737F0031852D276003694BE /* NSString+NSString_Extended.h in Headers */ = {isa = PBXBuildFile; fileRef = 3737F0011852D276003694BE /* NSString+NSString_Extended.h */; };
+		3737F0041852D276003694BE /* NSString+NSString_Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 3737F0021852D276003694BE /* NSString+NSString_Extended.m */; };
+		3744267B185219920054AFF7 /* AKSDKHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 37442679185219920054AFF7 /* AKSDKHelper.h */; };
+		3744267C185219920054AFF7 /* AKSDKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3744267A185219920054AFF7 /* AKSDKHelper.m */; };
+		3744267F18521D7A0054AFF7 /* AKWeiboRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 3744267D18521D7A0054AFF7 /* AKWeiboRequest.h */; };
+		3744268018521D7A0054AFF7 /* AKWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3744267E18521D7A0054AFF7 /* AKWeiboRequest.m */; };
 		C06BAFB714E231C5005172A9 /* compat.hxx in Headers */ = {isa = PBXBuildFile; fileRef = C06BAFB214E231C4005172A9 /* compat.hxx */; settings = {ATTRIBUTES = (); }; };
 		C06BAFB814E231C5005172A9 /* IWeibo.hxx in Headers */ = {isa = PBXBuildFile; fileRef = C06BAFB314E231C4005172A9 /* IWeibo.hxx */; settings = {ATTRIBUTES = (); }; };
 		C06BAFB914E231C5005172A9 /* IWeiboDef.hxx in Headers */ = {isa = PBXBuildFile; fileRef = C06BAFB414E231C4005172A9 /* IWeiboDef.hxx */; settings = {ATTRIBUTES = (); }; };
@@ -69,6 +75,17 @@
 		0458D1571810FC8E0025D660 /* AKParsingObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AKParsingObject.mm; sourceTree = "<group>"; };
 		0458D15A1811061A0025D660 /* AKParsingHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKParsingHandle.h; sourceTree = "<group>"; };
 		0458D15B1811061A0025D660 /* AKParsingHandle.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AKParsingHandle.mm; sourceTree = "<group>"; };
+		3737F0011852D276003694BE /* NSString+NSString_Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_Extended.h"; sourceTree = "<group>"; };
+		3737F0021852D276003694BE /* NSString+NSString_Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_Extended.m"; sourceTree = "<group>"; };
+		373F11ED184E346C00A4C8B7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		373F1206184E3A7100A4C8B7 /* weibosdkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "weibosdkTests-Info.plist"; sourceTree = "<group>"; };
+		373F1208184E3A7100A4C8B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		373F120A184E3A7100A4C8B7 /* weibosdkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weibosdkTests.m; sourceTree = "<group>"; };
+		373F120C184E3A7100A4C8B7 /* weibosdkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weibosdkTests-Prefix.pch"; sourceTree = "<group>"; };
+		37442679185219920054AFF7 /* AKSDKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKSDKHelper.h; sourceTree = "<group>"; };
+		3744267A185219920054AFF7 /* AKSDKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSDKHelper.m; sourceTree = "<group>"; };
+		3744267D18521D7A0054AFF7 /* AKWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKWeiboRequest.h; sourceTree = "<group>"; };
+		3744267E18521D7A0054AFF7 /* AKWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKWeiboRequest.m; sourceTree = "<group>"; };
 		C06BAFB214E231C4005172A9 /* compat.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compat.hxx; sourceTree = "<group>"; };
 		C06BAFB314E231C4005172A9 /* IWeibo.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IWeibo.hxx; sourceTree = "<group>"; };
 		C06BAFB414E231C4005172A9 /* IWeiboDef.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IWeiboDef.hxx; sourceTree = "<group>"; };
@@ -119,6 +136,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		373F11EC184E346C00A4C8B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				373F11ED184E346C00A4C8B7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		373F1204184E3A7100A4C8B7 /* weibosdkTests */ = {
+			isa = PBXGroup;
+			children = (
+				373F120A184E3A7100A4C8B7 /* weibosdkTests.m */,
+				373F1205184E3A7100A4C8B7 /* Supporting Files */,
+			);
+			path = weibosdkTests;
+			sourceTree = "<group>";
+		};
+		373F1205184E3A7100A4C8B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				373F1206184E3A7100A4C8B7 /* weibosdkTests-Info.plist */,
+				373F1207184E3A7100A4C8B7 /* InfoPlist.strings */,
+				373F120C184E3A7100A4C8B7 /* weibosdkTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C06BAFB114E231C4005172A9 /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +228,12 @@
 		C0C6574D14E2308D00C9B8C8 = {
 			isa = PBXGroup;
 			children = (
+				3737F0011852D276003694BE /* NSString+NSString_Extended.h */,
+				3737F0021852D276003694BE /* NSString+NSString_Extended.m */,
+				3744267D18521D7A0054AFF7 /* AKWeiboRequest.h */,
+				3744267E18521D7A0054AFF7 /* AKWeiboRequest.m */,
+				37442679185219920054AFF7 /* AKSDKHelper.h */,
+				3744267A185219920054AFF7 /* AKSDKHelper.m */,
 				041931A01814DD07007702FB /* AKWeiboFactory.h */,
 				041931A11814DD07007702FB /* AKWeiboFactory.mm */,
 				0419319C1814DA58007702FB /* AKSDKManager.h */,
@@ -206,6 +256,8 @@
 				C0FAC16714E2819D00480D70 /* Common */,
 				C06BAFB114E231C4005172A9 /* include */,
 				C06BAFBD14E231D7005172A9 /* src */,
+				373F1204184E3A7100A4C8B7 /* weibosdkTests */,
+				373F11EC184E346C00A4C8B7 /* Frameworks */,
 				C0C6575914E2308D00C9B8C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -240,6 +292,8 @@
 			files = (
 				042B5699180FB332009CC479 /* AKID.h in Headers */,
 				0458D15C1811061A0025D660 /* AKParsingHandle.h in Headers */,
+				3744267B185219920054AFF7 /* AKSDKHelper.h in Headers */,
+				3737F0031852D276003694BE /* NSString+NSString_Extended.h in Headers */,
 				0458D1581810FC8E0025D660 /* AKParsingObject.h in Headers */,
 				0419319E1814DA58007702FB /* AKSDKManager.h in Headers */,
 				041931A21814DD07007702FB /* AKWeiboFactory.h in Headers */,
@@ -252,6 +306,7 @@
 				C06BAFB914E231C5005172A9 /* IWeiboDef.hxx in Headers */,
 				C06BAFBA14E231C5005172A9 /* IWeiboMethod.hxx in Headers */,
 				C06BAFBB14E231C5005172A9 /* ParsingObject.hxx in Headers */,
+				3744267F18521D7A0054AFF7 /* AKWeiboRequest.h in Headers */,
 				C06BAFD914E231D8005172A9 /* config.h in Headers */,
 				C06BAFDB14E231D8005172A9 /* ParsingHandle.hxx in Headers */,
 				C06BAFDE14E231D8005172A9 /* SDKHelper.hxx in Headers */,
@@ -318,10 +373,13 @@
 				042B569E180FB887009CC479 /* AKWeiboDef.mm in Sources */,
 				0419319F1814DA58007702FB /* AKSDKManager.mm in Sources */,
 				0458D1591810FC8E0025D660 /* AKParsingObject.mm in Sources */,
+				3744267C185219920054AFF7 /* AKSDKHelper.m in Sources */,
 				C06BAFDA14E231D8005172A9 /* ParsingHandle.cxx in Sources */,
 				0458D1511810E0280025D660 /* AKWeiboMethod.mm in Sources */,
 				C06BAFDC14E231D8005172A9 /* ParsingObject.cxx in Sources */,
 				C06BAFDD14E231D8005172A9 /* SDKHelper.cxx in Sources */,
+				3737F0041852D276003694BE /* NSString+NSString_Extended.m in Sources */,
+				3744268018521D7A0054AFF7 /* AKWeiboRequest.m in Sources */,
 				0458D15D1811061A0025D660 /* AKParsingHandle.mm in Sources */,
 				C06BAFDF14E231D8005172A9 /* SDKManager.cxx in Sources */,
 				C06BAFE114E231D8005172A9 /* SDKMethodImpl.cxx in Sources */,
@@ -335,6 +393,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		373F1207184E3A7100A4C8B7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				373F1208184E3A7100A4C8B7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C0C6576314E2308D00C9B8C8 /* Debug */ = {

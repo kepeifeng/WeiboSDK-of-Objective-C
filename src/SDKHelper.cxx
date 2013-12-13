@@ -49,6 +49,7 @@ static bool IsUTF8(const char *str)
 enum enHostType
 {
 	EHT_V3,
+
 	EHT_V4,
 };
 
@@ -61,7 +62,7 @@ struct tagMethodURLElement
 
 #if defined(INTERNAL_INTERFACE_USEABLE)
 #	include "Internal/SDKInternURL.hxx"
-#endif //
+#endif
 
 static const struct tagMethodURLElement gMethodURLElements[] = 
 {
@@ -481,8 +482,7 @@ void SDKHelper::split(std::vector<std::string>& outVector, const char* string, c
 	}
 }
 
-void SDKHelper::makeRequestURL(std::string &outURL, std::string &outParam, const char* baseURL
-							   , bool isPost, const char* appkey, const char* accessToken)
+void SDKHelper::makeRequestURL(std::string &outURL, std::string &outParam, const char* baseURL , bool isPost, const char* appkey, const char* accessToken)
 {
 	std::string url = Util::StringUtil::getNotNullString(baseURL);
 	if (!url.empty())

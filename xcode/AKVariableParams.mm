@@ -15,7 +15,7 @@ using namespace weibo;
 struct AKVariableParamsOpaque {
 
 public:
-    AKVariableParamsOpaque():cpp(){};
+    AKVariableParamsOpaque(){cpp = new VariableParams();};
     VariableParams *cpp;
 };
 
@@ -45,13 +45,13 @@ public:
 
 #pragma mark - Property
 
--(long)since_id{
+-(long long)since_id{
 
     return variableParamsOpaque->cpp->since_id;
 
 }
 
--(void)setSince_id:(long)since_id{
+-(void)setSince_id:(long long)since_id{
 
     variableParamsOpaque->cpp->since_id = since_id;
 
@@ -246,33 +246,5 @@ public:
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

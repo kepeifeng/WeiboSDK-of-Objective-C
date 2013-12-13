@@ -9,6 +9,7 @@
 #import "AKSDKManager.h"
 #include "SDKManager.hxx"
 #include "AKParsingMidCallback.h"
+#import "AKWeiboMethod.h"
 
 using namespace weibo;
 
@@ -31,9 +32,16 @@ public:
 };
 
 
-@implementation AKSDKManager
+@implementation AKSDKManager{
+
+    AKWeiboMethod * _weiboMethod;
+    
+}
 
 @synthesize delegate = _delegate;
+@synthesize key = _key;
+@synthesize secret = _secret;
+@synthesize accessToken = _accessToken;
 
 -(id)init{
 
@@ -42,9 +50,9 @@ public:
     
         _sdkManagerOpaque = new AKSDKManagerOpaque(WeiboFactory::getWeibo());
         
-        _weiboMethod = [[AKWeiboMethod alloc]initWithObject:_sdkManagerOpaque->cpp->getMethod()];
+        //_weiboMethod = [[AKWeiboMethod alloc]initWithObject:_sdkManagerOpaque->cpp->getMethod()];
         
-        _sdkManagerOpaque->cpp->OnDelegateComplated = &AKParsingMidCallback::OnDelegateComplated;
+        _sdkManagerOpaque->cpp->OnDelegateComplated = &AKParsingMidCallback::OnDelegateCompleted;
         _sdkManagerOpaque->cpp->OnDelegateErrored = &AKParsingMidCallback::OnDelegateErrored;
         _sdkManagerOpaque->cpp->OnDelegateWillRelease = &AKParsingMidCallback::OnDelegateWillRelease;
     }
@@ -56,7 +64,17 @@ public:
 -(id<AKWeiboMethodProtocol>)getMethod{
     
     if(!_weiboMethod){
+        
         _weiboMethod = [[AKWeiboMethod alloc]initWithObject:_sdkManagerOpaque->cpp->getMethod()];
+
+        _weiboMethod.delegate = self;
+        _weiboMethod.consumerKey = self.key;
+        _weiboMethod.consumerSecret = self.secret;
+        _weiboMethod.accessToken = self.accessToken;
+        
+//        _weiboMethod = weiboMethod;
+        
+        
         
     }
     
@@ -90,7 +108,45 @@ public:
 -(void)setConsumer:(NSString *)key secret:(NSString *)secret{
 
     _sdkManagerOpaque->cpp->setOption(weibo::WOPT_CONSUMER,[key UTF8String],[secret UTF8String]);
+    _weiboMethod.consumerKey = key;
+    _weiboMethod.consumerSecret = secret;
+    
+    _key = key;
+    _secret = secret;
 
+}
+
+-(void)setKey:(NSString *)key{
+
+    _key = key;
+
+}
+
+-(NSString *)key{
+
+    return _key;
+}
+
+-(void)setSecret:(NSString *)secret{
+
+    _secret = secret;
+}
+
+-(NSString *)secret{
+
+    return _secret;
+}
+
+-(void)setAccessToken:(NSString *)token{
+    
+    _sdkManagerOpaque->cpp->setOption(weibo::WOPT_ACCESS_TOKEN, [token UTF8String]);
+    _weiboMethod.accessToken = token;
+    _accessToken = token;
+    
+}
+
+-(NSString *)accessToken{
+    return _accessToken;
 }
 
 -(void)setProxy:(AKWeiboProxyType)proxyType server:(NSString *)server port:(NSInteger)port username:(NSString *)username password:(NSString *)password{
@@ -102,13 +158,6 @@ public:
 -(void)setResponseFormat:(AKWeiboRequestFormat)format{
 
     _sdkManagerOpaque->cpp->setOption(weibo::WOPT_RESPONSE_FORMAT, (weibo::eWeiboRequestFormat)format);
-
-}
-
--(void)setAccessToken:(NSString *)token{
-
-    _sdkManagerOpaque->cpp->setOption(weibo::WOPT_ACCESS_TOKEN, [token UTF8String]);
-
 
 }
 
@@ -138,6 +187,28 @@ public:
 
 }
 
+
+#pragma mark - Weibo Method Delegate
+-(void)OnDelegateCompleted:(AKMethodAction)methodOption httpHeader:(NSString *)httpHeader result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
+
+    if(self.delegate){
+    
+        [self.delegate OnDelegateCompleted:self methodOption:methodOption httpHeader:httpHeader result:result pTask:pTask];
+    
+    
+    }
+    
+}
+
+-(void)OnDelegateErrored:(AKMethodAction)methodOption errCode:(NSInteger)errCode subErrCode:(NSInteger)subErrCode result:(AKParsingObject *)result pTask:(AKUserTaskInfo *)pTask{
+
+}
+
+-(void)OnDelegateWillRelease:(AKMethodAction)methodOption pTask:(AKUserTaskInfo *)pTask{
+
+
+}
+
 @end
 
 
@@ -148,13 +219,24 @@ AKParsingMidCallback::~AKParsingMidCallback(){}
 id<AKWeiboDelegate> AKParsingMidCallback::weiboDelegate;
 id<AKWeibo> AKParsingMidCallback::weibo;
 
-void AKParsingMidCallback::OnDelegateComplated(unsigned int methodOption, const char *httpHeader, weibo::ParsingObject *result, const weibo::UserTaskInfo *pTask){
+void AKParsingMidCallback::OnDelegateCompleted(unsigned int methodOption, const char *httpHeader, weibo::ParsingObject *result, const weibo::UserTaskInfo *pTask){
 
     if(!weiboDelegate){
         return;
     }
     
-    [weiboDelegate OnDelegateComplated:weibo methodOption:(NSUInteger)methodOption httpHeader:[NSString stringWithUTF8String:httpHeader] result:[[AKParsingObject alloc]initWithObject:result] pTask:[[AKUserTaskInfo alloc] initWithObject:(void *)pTask]];
+    //NSStringEncoding gbkEncoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+
+    //NSString *originSource = [NSString stringWithCString:result->getOriginString() encoding:gbkEncoding];
+    //NSString *originSource = [NSString stringWithUTF8String:result->getOriginString()];
+    //const char *string = result->getOriginString();
+    //[[NSFileManager defaultManager] createFileAtPath:@"/Users/kent/Desktop/originSource.txt" contents:[NSData dataWithBytes:string length:strlen(string)] attributes:nil];
+    //[[NSFileManager defaultManager] createFileAtPath:@"/Users/kent/Desktop/originSource_GBK.txt" contents:[originSource dataUsingEncoding:gbkEncoding] attributes:nil];
+    
+    //NSString *string = [NSString ]
+
+    
+    [weiboDelegate OnDelegateCompleted:weibo methodOption:(NSUInteger)methodOption httpHeader:[NSString stringWithUTF8String:httpHeader] result:[[AKParsingObject alloc]initWithObject:result] pTask:[[AKUserTaskInfo alloc] initWithObject:(void *)pTask]];
     
 }
 
