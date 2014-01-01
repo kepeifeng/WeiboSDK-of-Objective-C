@@ -86,6 +86,7 @@
 		3744267A185219920054AFF7 /* AKSDKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSDKHelper.m; sourceTree = "<group>"; };
 		3744267D18521D7A0054AFF7 /* AKWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKWeiboRequest.h; sourceTree = "<group>"; };
 		3744267E18521D7A0054AFF7 /* AKWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKWeiboRequest.m; sourceTree = "<group>"; };
+		37DD5D38186DD37000B21C3B /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		C06BAFB214E231C4005172A9 /* compat.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = compat.hxx; sourceTree = "<group>"; };
 		C06BAFB314E231C4005172A9 /* IWeibo.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IWeibo.hxx; sourceTree = "<group>"; };
 		C06BAFB414E231C4005172A9 /* IWeiboDef.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IWeiboDef.hxx; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		C0C6574D14E2308D00C9B8C8 = {
 			isa = PBXGroup;
 			children = (
+				37DD5D38186DD37000B21C3B /* Header.h */,
 				3737F0011852D276003694BE /* NSString+NSString_Extended.h */,
 				3737F0021852D276003694BE /* NSString+NSString_Extended.m */,
 				3744267D18521D7A0054AFF7 /* AKWeiboRequest.h */,

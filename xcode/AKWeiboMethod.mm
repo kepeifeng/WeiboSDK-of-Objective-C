@@ -187,7 +187,7 @@ struct AKWeiboMethodOpaque{
         AKParsingObject *parsingObject = [[AKParsingObject alloc]initWithData:receivedData];
         parsingObject.accessToken = request.accessToken;
         //parsingObject.originData = receivedData;
-        [self.delegate OnDelegateCompleted:request.option httpHeader:nil result:parsingObject pTask:nil];
+        [self.delegate OnDelegateCompleted:request.option httpHeader:nil result:parsingObject pTask:request.taskInfo];
         
     }
     
@@ -286,7 +286,6 @@ struct AKWeiboMethodOpaque{
 
 
 #pragma mark - 微博读取
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 微博读取
 -(AKWeiboResultCode) getStatusesPublicTimeline:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask{
 
@@ -487,7 +486,7 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 
 }
 
--(AKWeiboResultCode) getStatusesQueryID:(NSString *) mId    type:(NSInteger)type  is_batch:(NSInteger) is_batch  inbox:(NSInteger) inbox  isBase62:(NSInteger) isBase62  pTask:(AKUserTaskInfo *) pTask{
+-(AKWeiboResultCode) getStatusesQueryID:(NSString *) mId type:(NSInteger)type  is_batch:(NSInteger) is_batch  inbox:(NSInteger) inbox  isBase62:(NSInteger) isBase62  pTask:(AKUserTaskInfo *) pTask{
 
 	if (!mId)
 	{
@@ -665,11 +664,11 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 //    
 //	requestPtr->mPostFileField = "pic";
 //	requestPtr->makeUploadTaskDetail([self getNotNullString:filePath]);
-//    
-//	return internalEnqueue(requestPtr);
+//
+    //return internalEnqueue(requestPtr);
     
     ////return _weiboMethod->cpp->postStatusesUpload([statusText UTF8String],[filePath UTF8String],(VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);
-
+    
 }
 
 #pragma mark - 评论读取
@@ -1349,6 +1348,8 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 }
 
 
+
+
 #pragma mark - 关系写入
 // 关系写入
 -(AKWeiboResultCode) postFriendshipsCreate:(AKID *)usrId   skipCheck:(NSInteger)skipCheck  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask {
@@ -1460,6 +1461,136 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 
     //return _weiboMethod->cpp->postFriendshipsRemarkUpdate([uid UTF8String], [remark UTF8String], (VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);
 
+}
+
+
+#pragma mark - 好友分组
+
+-(AKWeiboResultCode) getFriendshipsGroups:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsTimeline:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsTimelineIds:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_TIMELINE_IDS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsMembers:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_MEMBERS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsMembersIds:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_MEMBERS_IDS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsMembersDescription:(NSString *)uids list_id:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_MEMBERS_DESCRIPTION additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsIsMember:(long)uid list_id:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_IS_MEMBER additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsListed:(NSString *)uids var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_LISTED additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsShow:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_SHOW additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getFriendshipsGroupsShowBatch:(long)list_ids uids:(NSString *)uids var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_FRIENDSHIPS_GROUPS_SHOW_BATCH additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsCreate:(NSString *)name description:(NSString *)description tags:(NSString *)tags var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_CREATE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsUpdate:(long)list_id name:(NSString *)name description:(NSString *)description tags:(NSString *)tags var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_UPDATE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsDestroy:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_DESTROY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsMembersAdd:(long)uid list_id:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_MEMBERS_ADD additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsMembersAddBatch:(long)list_id uids:(NSString *)uids group_descriptions:(NSString *)group_descriptions var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_MEMBERS_ADD_BATCH additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsMembersUpdate:(long)list_id uid:(long)uid group_description:(NSString *)group_description var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_MEMBERS_UPDATE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsMembersDestroy:(long)uid list_id:(long)list_id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_MEMBERS_DESTROY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postFriendshipsGroupsOrder:(NSString *)list_ids var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_FRIENDSHIPS_GROUPS_ORDER additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
 }
 
 
@@ -2934,6 +3065,391 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 }
 
 
+-(AKWeiboResultCode) getUsersGetTopStatus:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_USERS_GET_TOP_STATUS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postUsersSetTopStatus:(long)id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_USERS_SET_TOP_STATUS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postUsersCancelTopStatus:(long)id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_USERS_CANCEL_TOP_STATUS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getCommonCodeToLocation:(NSString *)codes var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_COMMON_CODE_TO_LOCATION additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getCommonGetCity:(NSString *)province capital:(NSString *)capital language:(NSString *)language var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_COMMON_GET_CITY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getCommonGetProvince:(NSString *)country capital:(NSString *)capital language:(NSString *)language var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_COMMON_GET_PROVINCE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getCommonGetCountry:(NSString *)capital language:(NSString *)language var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_COMMON_GET_COUNTRY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getCommonGetTimezone:(NSString *)language var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_COMMON_GET_TIMEZONE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePublicTimeline:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_PUBLIC_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceFriendsTimeline:(NSInteger)type var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_FRIENDS_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUserTimeline:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USER_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoiTimeline:(NSString *)poiid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POI_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceNearbyTimeline:(float)latitude longitude:(float)longitude range:(NSInteger)range starttime:(NSInteger)starttime endtime:(NSInteger)endtime offset:(NSInteger)offset var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_NEARBY_TIMELINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceStatusesShow:(long)id var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_STATUSES_SHOW additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUsersShow:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USERS_SHOW additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUsersCheckins:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USERS_CHECKINS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUsersPhotos:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USERS_PHOTOS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUsersTips:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USERS_TIPS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceUsersTodos:(long)uid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_USERS_TODOS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisShow:(NSString *)poiid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_SHOW additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisUsers:(NSString *)poiid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_USERS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisTips:(NSString *)poiid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_TIPS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisPhotos:(NSString *)poiid var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_PHOTOS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisSearch:(NSString *)keyword city:(NSString *)city category:(NSString *)category var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_SEARCH additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlacePoisCategory:(NSInteger)pid flag:(NSInteger)flag var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_POIS_CATEGORY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceNearbyPois:(float)latitude longitude:(float)longitude range:(NSInteger)range q:(NSString *)q category:(NSString *)category offset:(NSInteger)offset var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_NEARBY_POIS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceNearbyUsers:(float)latitude longitude:(float)longitude range:(NSInteger)range starttime:(long)starttime endtime:(long)endtime offset:(NSInteger)offset var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_NEARBY_USERS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceNearbyPhotos:(float)latitude longitude:(float)longitude range:(NSInteger)range starttime:(long)starttime endtime:(long)endtime offset:(NSInteger)offset var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_NEARBY_PHOTOS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getPlaceNearbyUsersList:(float)latitude longitude:(float)longitude range:(NSInteger)range filter:(NSInteger)filter gender:(NSInteger)gender level:(NSInteger)level startbirth:(NSInteger)startbirth endbirth:(NSInteger)endbirth offset:(NSInteger)offset var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_PLACE_NEARBY_USERS_LIST additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlacePoisCreate:(NSString *)title address:(NSString *)address category:(NSInteger)category lat:(float)latitude longitude:(float)longitude city:(NSString *)city province:(NSInteger)province country:(NSInteger)country phone:(NSString *)phone postcode:(NSString *)postcode extra:(NSString *)extra var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_POIS_CREATE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlacePoisAddCheckin:(NSString *)poiid status:(NSString *)status pic:(NSImage *)pic isPublic:(NSInteger)isPublic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_POIS_ADD_CHECKIN additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlacePoisAddPhoto:(NSString *)poiid status:(NSString *)status pic:(NSImage *)pic isPublic:(NSInteger)isPublic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_POIS_ADD_PHOTO additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlacePoisAddTip:(NSString *)poiid status:(NSString *)status isPublic:(NSInteger)isPublic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_POIS_ADD_TIP additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlacePoisAddTodo:(NSString *)poiid status:(NSString *)status isPublic:(NSInteger)isPublic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_POIS_ADD_TODO additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlaceNearbyUsersCreate:(float)latitude longitude:(float)longitude var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_NEARBY_USERS_CREATE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postPlaceNearbyUsersDestroy:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_PLACE_NEARBY_USERS_DESTROY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationBaseGetMapImage:(NSString *)center_coordinate city:(NSString *)city coordinates:(NSString *)coordinates names:(NSString *)names offset_x:(NSString *)offset_x offset_y:(NSString *)offset_y font:(NSString *)font lines:(NSString *)lines polygons:(NSString *)polygons size:(NSString *)size format:(NSString *)format zoom:(NSString *)zoom scale:(BOOL)scale traffic:(BOOL)traffic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_BASE_GET_MAP_IMAGE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationGeoIpToGeo:(NSString *)ip var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_GEO_IP_TO_GEO additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationGeoAddressToGeo:(NSString *)address var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_GEO_ADDRESS_TO_GEO additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationGeoGeoToAddress:(NSString *)coordinate var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_GEO_GEO_TO_ADDRESS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationGeoGpsToOffset:(NSString *)coordinate var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_GEO_GPS_TO_OFFSET additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationGeoIsDomestic:(NSString *)coordinates var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_GEO_IS_DOMESTIC additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationPoisSearchByLocation:(NSString *)q category:(NSString *)category city:(NSString *)city var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_POIS_SEARCH_BY_LOCATION additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationPoisSearchByGeo:(NSString *)q coordinate:(NSString *)coordinate cenname:(NSString *)cenname city:(NSString *)city range:(NSString *)range searchtype:(NSString *)searchtype srctype:(NSString *)srctype naviflag:(NSInteger)naviflag sr:(NSInteger)sr var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_POIS_SEARCH_BY_GEO additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationPoisSearchByArea:(NSString *)q category:(NSString *)category coordinates:(NSString *)coordinates city:(NSString *)city var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_POIS_SEARCH_BY_AREA additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationPoisShowBatch:(NSString *)srcids var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_POIS_SHOW_BATCH additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postLocationPoisAdd:(NSInteger)srcid name:(NSString *)name address:(NSString *)address city_name:(NSString *)city_name category:(NSString *)category longitude:(NSString *)longitude latitude:(NSString *)latitude telephone:(NSString *)telephone pic_url:(NSString *)pic_url url:(NSString *)url tags:(NSString *)tags description:(NSString *)description intro:(NSString *)intro traffic:(NSString *)traffic var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_LOCATION_POIS_ADD additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) postLocationMobileGetLocation:(NSString *)json var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_LOCATION_MOBILE_GET_LOCATION additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationLineDriveRoute:(NSString *)begin_pid begin_coordinate:(NSString *)begin_coordinate end_pid:(NSString *)end_pid end_coordinate:(NSString *)end_coordinate type:(NSInteger)type var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_LINE_DRIVE_ROUTE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationLineBusRoute:(NSString *)begin_pid begin_coordinate:(NSString *)begin_coordinate end_pid:(NSString *)end_pid end_coordinate:(NSString *)end_coordinate type:(NSInteger)type var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_LINE_BUS_ROUTE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationLineBusLine:(NSString *)q city:(NSString *)city var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_LINE_BUS_LINE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) getLocationLineBusStation:(NSString *)q city:(NSString *)city var:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_LOCATION_LINE_BUS_STATION additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) LocationCitycode:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT__LOCATION_CITYCODE additionParam:param requestFormat:self.unifiedFormat httpMethod:@"" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) LocationCitycodeBus:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT__LOCATION_CITYCODE_BUS additionParam:param requestFormat:self.unifiedFormat httpMethod:@"" pTask:pTask];
+    return [self startRequest:request];
+    
+}
+-(AKWeiboResultCode) LocationCategory:(AKVariableParams *)var pTask:(AKUserTaskInfo *)pTask{
+    NSString *param;
+    [AKSDKHelper makeVariableParams:&param length:255 var:var];
+    AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT__LOCATION_CATEGORY additionParam:param requestFormat:self.unifiedFormat httpMethod:@"" pTask:pTask];
+    return [self startRequest:request];
+    
+}
 
 
 @end
