@@ -71,22 +71,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "testMacOS/testMacOS/Weibo.mm"
-            timestampString = "408378601.370891"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-OnDelegateCompleted:methodOption:httpHeader:result:pTask:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "AKWeiboMethod.mm"
             timestampString = "408428356.290337"
             startingColumnNumber = "9223372036854775807"
@@ -130,52 +114,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "testMacOS/testMacOS/Weibo.mm"
-            timestampString = "408378601.370891"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-OnDelegateCompleted:methodOption:httpHeader:result:pTask:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Weibo OnDelegateCompleted:methodOption:httpHeader:result:pTask:]"
-                  moduleName = "testMacOS"
-                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/testMacOS/testMacOS/Weibo.mm"
-                  timestampString = "408428356.323674"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "130">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Weibo OnDelegateCompleted:methodOption:httpHeader:result:pTask:]"
-                  moduleName = "testMacOS"
-                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/testMacOS/testMacOS/Weibo.mm"
-                  timestampString = "408428356.323971"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "526">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -192,7 +130,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AKWeiboMethod.mm"
@@ -205,13 +143,13 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AKWeiboMethod connectionDidFinishLoading:]"
                   moduleName = "testMacOS"
                   urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
-                  timestampString = "408428356.324281"
+                  timestampString = "415456590.187287"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "178"
@@ -219,20 +157,310 @@
                   offsetFromSymbolStart = "39">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AKWeiboMethod connectionDidFinishLoading:]"
                   moduleName = "testMacOS"
                   urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
-                  timestampString = "408428356.32483"
+                  timestampString = "415456590.187589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "178"
                   endingLineNumber = "178"
-                  offsetFromSymbolStart = "615">
+                  offsetFromSymbolStart = "704">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKSDKHelper.m"
+            timestampString = "415455970.423345"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "+makeRequestURL:outParam:baseURL:isPost:appkey:accessToken:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKSDKHelper.m"
+            timestampString = "415456903.089541"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "+makeRequestURL:outParam:baseURL:isPost:appkey:accessToken:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKWeiboMethod.mm"
+            timestampString = "415769438.722013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "674"
+            endingLineNumber = "674"
+            landmarkName = "-postStatusesUpload:filePath:var:pTask:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415699209.750742"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "671"
+                  endingLineNumber = "671"
+                  offsetFromSymbolStart = "1110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415699209.751034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "671"
+                  endingLineNumber = "671"
+                  offsetFromSymbolStart = "2964">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]_block_invoke"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415699209.751379"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "672"
+                  endingLineNumber = "672"
+                  offsetFromSymbolStart = "71">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]_block_invoke"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415699209.751648"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "671"
+                  endingLineNumber = "671"
+                  offsetFromSymbolStart = "86">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testMacOS/testMacOS/Weibo.mm"
+            timestampString = "415696538.69604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-start"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Weibo start]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/testMacOS/testMacOS/Weibo.mm"
+                  timestampString = "415697001.668769"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "514">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[Weibo start]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/testMacOS/testMacOS/Weibo.mm"
+                  timestampString = "415697001.669026"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "1340">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKWeiboMethod.mm"
+            timestampString = "415769438.722013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "698"
+            endingLineNumber = "698"
+            landmarkName = "-postStatusesUpload:filePath:var:pTask:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKWeiboMethod.mm"
+            timestampString = "415769438.722013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "734"
+            endingLineNumber = "734"
+            landmarkName = "-postStatusesUpload:filePath:var:pTask:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415768302.528356"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "735"
+                  endingLineNumber = "735"
+                  offsetFromSymbolStart = "2748">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415768302.528632"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "735"
+                  endingLineNumber = "735"
+                  offsetFromSymbolStart = "3513">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415768302.528936"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "735"
+                  endingLineNumber = "735"
+                  offsetFromSymbolStart = "3693">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AKWeiboMethod.mm"
+            timestampString = "415769438.722013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "-postStatusesUpload:filePath:var:pTask:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]_block_invoke"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415705005.047252"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "690"
+                  endingLineNumber = "690"
+                  offsetFromSymbolStart = "617">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[AKWeiboMethod postStatusesUpload:filePath:var:pTask:]_block_invoke"
+                  moduleName = "testMacOS"
+                  urlString = "file:///Users/kent/Documents/Projects/GIT/weibo-sdk/xcode/AKWeiboMethod.mm"
+                  timestampString = "415705005.047529"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "690"
+                  endingLineNumber = "690"
+                  offsetFromSymbolStart = "1553">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "testMacOS/testMacOS/Weibo.mm"
+            timestampString = "415769433.415029"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-OnDelegateCompleted:methodOption:httpHeader:result:pTask:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

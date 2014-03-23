@@ -41,6 +41,7 @@
     
     [weibo startUp];
     [weibo setConsumer:clientID secret:@"57663124f7eb21e1207a2ee09fed507b"];
+//    [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
     [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
 
     //NSString *authorizeURL =[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&response_type=code&redirect_uri=%@", clientID, redirectURL];
@@ -53,10 +54,22 @@
 
     //[NSThread sleepForTimeInterval:5];
     
-    //NSString *status = @"Never turn around as the longest road has its end. Do be cheerful for the happiest heart has its sorrow. ——再长的路都有尽头，千万不要回头；再快乐的心都有烦恼，千万不要在意";
-    //[method postStatusesUpdate:[status stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] var:nil pTask:nil];
+    NSString *status = @"The difference between failure and success is doing a thing nearly right and doing it exactly right.";
     
-    [method getStatusesHomeTimeline:nil pTask:nil];
+    AKVariableParams *var = [AKVariableParams new];
+    var.accessToken = @"2.0047eJnBwuHMpB596bbb5137sxwwOE";
+    //[method postStatusesUpdate:status var:var pTask:nil];
+    
+
+
+//    NSURL *url=[NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/focalpoint.jpg"];
+    NSArray *filePathes = [[NSArray alloc ] initWithObjects:[NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/kg.png"],
+                           [NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/focalpoint.jpg"],
+                           nil];
+    
+    [method postStatusesUpload:@"testing image upload" filePath:filePathes var:nil pTask:nil];
+    
+//    [method getStatusesHomeTimeline:nil pTask:nil];
     
     //[method getUsersShow:[[AKID alloc] initWithIdType:AKIDTypeID text:@"1672616342" key:nil] extend:@"" var:nil pTask:nil];
     //[NSThread sleepForTimeInterval:5];
@@ -65,6 +78,14 @@
 //    [weibo stopAll];
 //    [weibo shutDown];
     
+    
+    
+}
+
+-(void)testPostStatusWithImages{
+
+    
+
 }
 
 

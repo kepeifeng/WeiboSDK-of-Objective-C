@@ -340,7 +340,10 @@ static NSArray* _methodURLElement;
             *outParam = [baseURL substringFromIndex:urlParamSpliterLocation.location+urlParamSpliterLocation.length];
             
         }
-        *outParam = [NSString stringWithFormat:@"%@%@%@",*outParam, @"&access_tokent=", accessToken];
+        if([*outParam rangeOfString:@"access_token="].location == NSNotFound){
+        
+            *outParam = [NSString stringWithFormat:@"%@%@%@",*outParam, @"&access_token=", accessToken];
+        }
         
         
     }
@@ -356,7 +359,10 @@ static NSArray* _methodURLElement;
         
         }
         
-        *outURL = [NSString stringWithFormat:@"%@%@%@",*outURL, @"&access_token=",accessToken];
+        if([*outURL rangeOfString:@"access_token="].location == NSNotFound){
+        
+            *outURL = [NSString stringWithFormat:@"%@%@%@",*outURL, @"&access_token=",accessToken];
+        }
         
     
     }
@@ -409,6 +415,8 @@ static NSArray* _methodURLElement;
     
 	// variable for statuses
     [AKSDKHelper setParam:outParam paramname:@"&simplify" paramval:var.simplify];
+    [AKSDKHelper setParam:outParam paramname:@"&access_token" paramval:var.accessToken];
+    
 	[AKSDKHelper setIntParam:outParam paramName:@"&filter_by_source" paramval:var.filter_by_source forceAdd:NO];
 	[AKSDKHelper setIntParam:outParam paramName:@"&filter_by_type" paramval:var.filter_by_type forceAdd:NO];
 	[AKSDKHelper setIntParam:outParam paramName:@"&filter_by_author" paramval:var.filter_by_author forceAdd:NO];

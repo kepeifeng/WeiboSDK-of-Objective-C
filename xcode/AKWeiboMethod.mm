@@ -641,7 +641,7 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
     //return  _weiboMethod->cpp->postStatusesUploadUrlText([statusText UTF8String],[picInfo UTF8String], isPicUrl, (VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);
 }
 
--(AKWeiboResultCode) postStatusesUpload:(NSString *)statusText  filePath:(NSString *)filePath  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask{
+-(AKWeiboResultCode) postStatusesUpload:(NSString *)statusText  filePath:(NSArray *)filePath  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask{
     
     if (!statusText)
 	{
@@ -656,7 +656,75 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 	NSString * param;
 	[AKSDKHelper setParam:&param paramname:@"&status" paramval:statusText];
 	[AKSDKHelper makeVariableParams:&param length: 255 var:var];
+    //AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_STATUSES_UPLOAD_URL_TEXT additionParam:param requestFormat:self.unifiedFormat httpMethod:@"POST" pTask:pTask];
+    
+//    request.timeoutInterval = 60.0;
+    
+    AKWeiboRequest *request = [AKWeiboRequest requestWithURL:[NSURL URLWithString: @"https://upload.api.weibo.com/2/statuses/upload.json"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:54.0];
+    
+    request.option = AKWBOPT_POST_STATUSES_UPLOAD;
+    request.HTTPMethod = @"POST";
+    request.taskInfo = [pTask copy];
+    
+    NSMutableData* body = [[NSMutableData alloc] initWithData:request.HTTPBody];
+    
+    NSString* boundary = [self randomStringWithLength:64];
+    [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
+    NSData *boundaryData = [[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
+    //FILES===================
+    
+    [filePath enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [body appendData:boundaryData];
 
+        NSURL *fileURL = obj;
+        NSString *fileExtention = [[fileURL pathExtension] lowercaseString];
+        NSString *contentType;
+        
+        if([fileExtention isEqualToString:@"jpg"] || [fileExtention isEqualToString:@"jpeg"]){
+            contentType = @"image/jpeg";
+        }
+        else if([fileExtention isEqualToString:@"png"]){
+            contentType = @"image/png";
+        }
+        else if([fileExtention isEqualToString:@"gif"]){
+            contentType = @"image/gif";
+        }
+        
+        [body appendData: [[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", @"pic", [fileURL lastPathComponent]] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n",contentType] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData: [NSData dataWithContentsOfURL:obj]]; // It just return NSData with loaded file in it
+        [body appendData: [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
+
+    }];
+    
+    //FILES END===============
+    [body appendData:boundaryData];
+    [body appendData: [[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n", @"status", statusText] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:boundaryData];
+    [body appendData: [[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n", @"access_token", self.accessToken] dataUsingEncoding:NSUTF8StringEncoding]];
+
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [body writeToFile:@"/Users/kent/Desktop/data(upload).txt" atomically:YES];
+    
+    [request setValue:[NSString stringWithFormat:@"%lu", [body length]] forHTTPHeaderField:@"Content-Length"];
+    
+    [request setHTTPBody:body];
+    
+    return [self startRequest:request];
+
+
+/*
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *rdata, NSError *error){
+                           
+                               NSLog(@"%@",[[NSString alloc] initWithData:rdata encoding:NSUTF8StringEncoding]);
+                               NSLog(@"Status with photo posted");
+                           
+                           }];
+ */
     
     //TODO:Implement status upload.
 //	//Note: Set with post form
@@ -669,7 +737,48 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
     
     ////return _weiboMethod->cpp->postStatusesUpload([statusText UTF8String],[filePath UTF8String],(VariableParams *)[var getCore],(UserTaskInfo *)[pTask getCore]);
     
+   return 1;
+    
 }
+
+- (NSString *)randomStringWithLength:(int)length
+{
+    
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
+    
+    for (int i = 0; i < length; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random() % [letters length]]];
+    }
+    
+    return randomString;
+}
+
+//-(void)uploadImage
+//{
+//    mainImageView.image=self.entryImage; //set this just to verify that
+//    //image is valid
+//    NSData *imgData = UIImageJPEGRepresentation(mainImageView.image, 90);
+//    NSString *urlString = @"http://mydomain.com/grap/upload.php";
+//    NSURL *url = [[NSURL alloc]initWithString:urlString];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:urlString]];
+//    [request setHTTPMethod:@"POST"];
+//    NSString *boundary = @"0xKhTmLbOuNdArY";
+//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary, nil];
+//    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+//    NSMutableData *body = [NSMutableData data];
+//    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[@"Content-Disposition: form-data; name=\"pic\"; filename=\"iphonefile.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[NSData dataWithData:imgData]];
+//    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [request setHTTPBody:body];
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(returnString);
+//    
+//}
 
 #pragma mark - 评论读取
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2871,7 +2980,7 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 #pragma mark - 未读信息
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Unread
--(AKWeiboResultCode) getRemindUnreadCount:(NSString *)uid  pTask:(AKUserTaskInfo *) pTask{
+-(AKWeiboResultCode) getRemindUnreadCount:(NSString *)uid var:(AKVariableParams *) var pTask:(AKUserTaskInfo *) pTask{
 
     if (!uid)
 	{
@@ -2880,6 +2989,7 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
     
 	NSString * param;
 	[AKSDKHelper setParam:&param paramname:@"&uid" paramval:uid];
+    [AKSDKHelper makeVariableParams:&param length: 255 var:var];
     
     AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_GET_REMIND_UNREAD_COUNT additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
     
@@ -2891,17 +3001,111 @@ additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTa
 
 }
 
--(AKWeiboResultCode) postStatusesResetCount:(NSInteger)type  pTask:(AKUserTaskInfo *) pTask{
+
+-(NSString *)getSetCountTypeStringOfMessageType:(AKMessageType)messageType{
+    
+    /*
+     follower：新粉丝数
+     cmt：新评论数
+     dm：新私信数
+     mention_status：新提及我的微博数
+     mention_cmt：新提及我的评论数
+     group：微群消息数
+     notice：新通知数
+     invite：新邀请数
+     badge：新勋章数
+     photo：相册消息数
+     close_friends_feeds：密友feeds未读数
+     close_friends_mention_status：密友提及我的微博未读数
+     close_friends_mention_cmt：密友提及我的评论未读数
+     close_friends_cmt：密友评论未读数
+     close_friends_attitude：密友表态未读数
+     close_friends_common_cmt：密友共同评论未读数
+     close_friends_invite：密友邀请未读数
+     */
+    switch (messageType) {
+        case AKMessageTypeFollower:
+            return @"follower";
+            break;
+            
+        case AKMessageTypeComment:
+            return @"cmt";
+            break;
+            
+        case AKMessageTypeDirectMessage:
+            return @"dm";
+            break;
+            
+        case AKMessageTypeMentionStatus:
+            return @"mention_status";
+            break;
+            
+        case AKMessageTypeMentionComment:
+            return @"mention_cmt";
+            break;
+            
+        case AKMessageTypeGroup:
+            return @"group";
+            break;
+            
+        case AKMessageTypeNotice:
+            return @"notice";
+            break;
+            
+        case AKMessageTypeInvite:
+            return @"invite";
+            break;
+            
+        case AKMessageTypeBadge:
+            return @"badge";
+            break;
+            
+        case AKMessageTypePhoto:
+            return @"photo";
+            break;
+            
+        case AKMessageTypeCloseFriendsFeeds:
+            return @"close_friends_feeds";
+            break;
+            
+        case AKMessageTypeCloseFriendsMentionStatus:
+            return @"close_friends_mention_status";
+            break;
+            
+        case AKMessageTypeCloseFriendsMentionComment:
+            return @"close_friends_mention_cmt";
+            break;
+            
+        case AKMessageTypeCloseFriendsComment:
+            return @"close_friends_cmt";
+            break;
+            
+        case AKMessageTypeCloseFriendsAttitude:
+            return @"close_friends_attitude";
+            break;
+            
+        case AKMessageTypeCloseFriendsCommonComment:
+            return @"close_friends_common_cmt";
+            break;
+            
+        case AKMessageTypeCloseFriendsInvite:
+            return @"close_friends_invite";
+            
+        default:
+            return @"";
+            break;
+    }
+    
+}
+
+-(AKWeiboResultCode) postStatusesResetCount:(AKMessageType)type  pTask:(AKUserTaskInfo *) pTask{
 
     NSString * param;
-	[AKSDKHelper setIntParam:&param paramName:@"&type" paramval:type];
+    [AKSDKHelper setParam:&param paramname:@"&type" paramval:[self getSetCountTypeStringOfMessageType:type]];
     
     AKWeiboRequest *request = [self internalMakeWeiboRequest:AKWBOPT_POST_STATUSES_RESET_COUNT additionParam:param requestFormat:self.unifiedFormat httpMethod:@"GET" pTask:pTask];
     
 	return [self startRequest:request];
-    
-    //return _weiboMethod->cpp->postStatusesResetCount((int)type, (UserTaskInfo *)[pTask getCore]);
-
 }
 
 

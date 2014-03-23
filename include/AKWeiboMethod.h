@@ -1009,6 +1009,67 @@ typedef NS_ENUM(NSInteger, AKMethodAction)
 };
 
 
+
+typedef NS_ENUM(NSUInteger, AKMessageType){
+    
+    /*
+     follower：新粉丝数
+     cmt：新评论数
+     dm：新私信数
+     mention_status：新提及我的微博数
+     mention_cmt：新提及我的评论数
+     group：微群消息数
+     notice：新通知数
+     invite：新邀请数
+     badge：新勋章数
+     photo：相册消息数
+     close_friends_feeds：密友feeds未读数
+     close_friends_mention_status：密友提及我的微博未读数
+     close_friends_mention_cmt：密友提及我的评论未读数
+     close_friends_cmt：密友评论未读数
+     close_friends_attitude：密友表态未读数
+     close_friends_common_cmt：密友共同评论未读数
+     close_friends_invite：密友邀请未读数
+     */
+    
+    //新粉丝数
+    AKMessageTypeFollower,
+    //新评论数
+    AKMessageTypeComment,
+    //新私信数
+    AKMessageTypeDirectMessage,
+    //新提及我的微博数
+    AKMessageTypeMentionStatus,
+    //新提及我的评论数
+    AKMessageTypeMentionComment,
+    //微群消息数
+    AKMessageTypeGroup,
+    //新通知数
+    AKMessageTypeNotice,
+    //新邀请数
+    AKMessageTypeInvite,
+    //新勋章数
+    AKMessageTypeBadge,
+    //相册消息数
+    AKMessageTypePhoto,
+    //密友feeds未读数
+    AKMessageTypeCloseFriendsFeeds,
+    //密友提及我的微博未读数
+    AKMessageTypeCloseFriendsMentionStatus,
+    //密友提及我的评论未读数
+    AKMessageTypeCloseFriendsMentionComment,
+    //密友评论未读数
+    AKMessageTypeCloseFriendsComment,
+    //密友表态未读数
+    AKMessageTypeCloseFriendsAttitude,
+    //密友共同评论未读数
+    AKMessageTypeCloseFriendsCommonComment,
+    //密友邀请未读数
+    AKMessageTypeCloseFriendsInvite
+    
+};
+
+
 @protocol AKMethodDelegate
 
 /**
@@ -1293,7 +1354,7 @@ typedef NS_ENUM(NSInteger, AKMethodAction)
  
  *  @return 执行结果的代码，详见「AKWeiboResultCode」。
  */
--(AKWeiboResultCode) postStatusesUpload:(NSString *)statusText  filePath:(NSString *)filePath  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask;
+-(AKWeiboResultCode) postStatusesUpload:(NSString *)statusText  filePath:(NSArray *)filePath  var:(AKVariableParams *) var  pTask:(AKUserTaskInfo *) pTask;
     
 #pragma mark - 评论
 
@@ -2555,7 +2616,7 @@ typedef NS_ENUM(NSInteger, AKMethodAction)
  
  *  @return 执行结果的代码，详见「AKWeiboResultCode」。
  */
--(AKWeiboResultCode) getRemindUnreadCount:(NSString *)uid  pTask:(AKUserTaskInfo *) pTask;
+-(AKWeiboResultCode) getRemindUnreadCount:(NSString *)uid var:(AKVariableParams *) var pTask:(AKUserTaskInfo *) pTask;
 
 
 /**
@@ -2563,12 +2624,30 @@ typedef NS_ENUM(NSInteger, AKMethodAction)
  *
  *  [写入接口 ]remind/set_count
  *  @see http://open.weibo.com/wiki/2/remind/set_count
- *  @param var   附加参数，用于过滤内容，可以为详见「AKVariableParams」。
+ *  @param type  需要设置未读数计数的消息项，
+         follower：新粉丝数、
+         cmt：新评论数、
+         dm：新私信数、
+         mention_status：新提及我的微博数、
+         mention_cmt：新提及我的评论数、
+         group：微群消息数、
+         notice：新通知数、
+         invite：新邀请数、
+         badge：新勋章数、
+         photo：相册消息数、
+         close_friends_feeds：密友feeds未读数、
+         close_friends_mention_status：密友提及我的微博未读数、
+         close_friends_mention_cmt：密友提及我的评论未读数、
+         close_friends_cmt：密友评论未读数、
+         close_friends_attitude：密友表态未读数、
+         close_friends_common_cmt：密友共同评论未读数、
+         close_friends_invite：密友邀请未读数，
+         一次只能操作一项。
  *  @param pTask 用户任务信息，此Object将会在Callback中一同返回。详见「AKUserTaskInfo」。
  
  *  @return 执行结果的代码，详见「AKWeiboResultCode」。
  */
--(AKWeiboResultCode) postStatusesResetCount:(NSInteger)type  pTask:(AKUserTaskInfo *) pTask;
+-(AKWeiboResultCode) postStatusesResetCount:(AKMessageType)type  pTask:(AKUserTaskInfo *) pTask;
 
 
 /**
