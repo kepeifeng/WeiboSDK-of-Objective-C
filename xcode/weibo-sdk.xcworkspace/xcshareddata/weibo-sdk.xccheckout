@@ -12,6 +12,8 @@
 	<dict>
 		<key>E3D3A669-06B1-4B9D-AA6A-90D584E0E8A4</key>
 		<string>https://github.com/kepeifeng/WeiboSDK-of-Objective-C.git</string>
+		<key>FA533981-3F5C-4128-9DDA-17C37C02B10C</key>
+		<string>https://github.com/kepeifeng/weibo-sdk-util.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>xcode/weibo-sdk.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>E3D3A669-06B1-4B9D-AA6A-90D584E0E8A4</key>
 		<string>../..</string>
+		<key>FA533981-3F5C-4128-9DDA-17C37C02B10C</key>
+		<string>../../../weibo-sdk-util</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/kepeifeng/WeiboSDK-of-Objective-C.git</string>
@@ -35,6 +39,14 @@
 			<string>E3D3A669-06B1-4B9D-AA6A-90D584E0E8A4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>weibo-sdk</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FA533981-3F5C-4128-9DDA-17C37C02B10C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>weibo-sdk-util</string>
 		</dict>
 	</array>
 </dict>

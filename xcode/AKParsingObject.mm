@@ -211,12 +211,12 @@ public:
 -(void)setOriginData:(NSData *)originData{
 
     _originData = originData;
-    NSObject *object = (NSObject *)[self getObject];
-    if([object isKindOfClass:[NSDictionary class]]){
-        
-        _dictionary = (NSDictionary *)object;
-        
-    }
+//    NSObject *object = (NSObject *)[self getObject];
+//    if([object isKindOfClass:[NSDictionary class]]){
+//        
+//        _dictionary = (NSDictionary *)object;
+//        
+//    }
     
 
 }
@@ -249,22 +249,24 @@ public:
     
     NSData *data;
     
-    if(self.originData){
-        
-        data = self.originData;
-        
-    }
-    else{
-        
-        NSString *originString = [self getOriginString];
-        if(originString.length>0 && ![originString hasSuffix:@"}"]){
-            
-            NSRange jsonShouldEndAt = [originString rangeOfString:@"}" options:NSBackwardsSearch];
-            originString = [originString substringToIndex:jsonShouldEndAt.location+jsonShouldEndAt.length];
-            
-        }
-        data = [originString dataUsingEncoding:NSUnicodeStringEncoding];
-    }
+    data = self.originData;
+//    
+//    if(self.originData){
+//        
+//        data = self.originData;
+//        
+//    }
+//    else{
+//        
+//        NSString *originString = [self getOriginString];
+//        if(originString.length>0 && ![originString hasSuffix:@"}"]){
+//            
+//            NSRange jsonShouldEndAt = [originString rangeOfString:@"}" options:NSBackwardsSearch];
+//            originString = [originString substringToIndex:jsonShouldEndAt.location+jsonShouldEndAt.length];
+//            
+//        }
+//        data = [originString dataUsingEncoding:NSUnicodeStringEncoding];
+//    }
     
     // probably check here that returnedData isn't nil; attempting
     // NSJSONSerialization with nil data raises an exception, and who

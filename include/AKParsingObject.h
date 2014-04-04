@@ -31,25 +31,27 @@ struct AKParsingObjectOpaque;
 
 //-(void)dealloc;
 
--(NSString *)getErrorMessage;
--(NSString *)getOriginString;
+//-(NSString *)getErrorMessage;
+//-(NSString *)getOriginString;
 
--(NSString *)getKeyName;
--(NSString *)asAString;
--(long long)asANumberic;
+//-(NSString *)getKeyName;
+//-(NSString *)asAString;
+//-(long long)asANumberic;
 
--(NSUInteger)getSubCounts;
+//-(NSUInteger)getSubCounts;
 
--(NSNumber *)getSubNumbericByKey:(NSString *)key;
--(NSString *)getSubStringByKey:(NSString *)key;
--(AKParsingObject *)getSubObjectByKey:(NSString *)key;
+//-(NSNumber *)getSubNumbericByKey:(NSString *)key;
+//-(NSString *)getSubStringByKey:(NSString *)key;
+//-(AKParsingObject *)getSubObjectByKey:(NSString *)key;
 
--(long long)getSubNumbericByIndex:(NSInteger)index;
--(NSString *)getSubStringByIndex:(NSInteger)index;
--(id)getSubObjectByIndex:(NSInteger)index;
+//-(long long)getSubNumbericByIndex:(NSInteger)index;
+//-(NSString *)getSubStringByIndex:(NSInteger)index;
+//-(id)getSubObjectByIndex:(NSInteger)index;
 
 //-(void) enumAllSubWithUserData:(id)userData;
 //-(NSDictionary *)getDictionaryObject;
+
+
 /**
  *  Return a Serialized JSON object. The return object can be a NSArray or a NSDictionary
  *

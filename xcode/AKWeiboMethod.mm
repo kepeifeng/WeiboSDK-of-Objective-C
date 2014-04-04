@@ -168,6 +168,11 @@ struct AKWeiboMethodOpaque{
     NSLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+    if(self.delegate){
+        
+        [self.delegate OnDelegateErrored:request.option errCode:1 subErrCode:1 result:nil pTask:request.taskInfo];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -202,7 +207,7 @@ struct AKWeiboMethodOpaque{
 
 // 不管那一種 challenge 都相信
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
-    NSLog(@"received authen challenge");
+    
     [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
 }
 

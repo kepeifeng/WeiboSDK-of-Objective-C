@@ -41,43 +41,13 @@
     
     [weibo startUp];
     [weibo setConsumer:clientID secret:@"57663124f7eb21e1207a2ee09fed507b"];
-//    [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
     [weibo setAccessToken:@"2.0047eJnBwuHMpB596bbb5137sxwwOE"];
 
-    //NSString *authorizeURL =[NSString stringWithFormat:@"https://api.weibo.com/oauth2/authorize?client_id=%@&response_type=code&redirect_uri=%@", clientID, redirectURL];
-    //[[NSWorkspace sharedWorkspace]openURL:[NSURL URLWithString:authorizeURL]];
-    
     id<AKWeiboMethodProtocol> method = [weibo getMethod];
-    
-    //[method oauth2Code:@"b337dee2e7fcaac6411e1a166d826684" url:redirectURL pTask:nil];
-    
-
-    //[NSThread sleepForTimeInterval:5];
-    
-    NSString *status = @"The difference between failure and success is doing a thing nearly right and doing it exactly right.";
-    
-    AKVariableParams *var = [AKVariableParams new];
-    var.accessToken = @"2.0047eJnBwuHMpB596bbb5137sxwwOE";
-    //[method postStatusesUpdate:status var:var pTask:nil];
-    
-
-
-//    NSURL *url=[NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/focalpoint.jpg"];
-    NSArray *filePathes = [[NSArray alloc ] initWithObjects:[NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/kg.png"],
-                           [NSURL fileURLWithPath:@"/Users/kent/Pictures/test image/focalpoint.jpg"],
-                           nil];
-    
-    [method postStatusesUpload:@"testing image upload" filePath:filePathes var:nil pTask:nil];
-    
-//    [method getStatusesHomeTimeline:nil pTask:nil];
-    
-    //[method getUsersShow:[[AKID alloc] initWithIdType:AKIDTypeID text:@"1672616342" key:nil] extend:@"" var:nil pTask:nil];
-    //[NSThread sleepForTimeInterval:5];
+    [method getStatusesHomeTimeline:nil pTask:nil];
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:5]];
     
-//    [weibo stopAll];
-//    [weibo shutDown];
-    
+
     
     
 }
@@ -104,7 +74,7 @@
         if (result.isUseable)
         {
             logined = true;
-            NSString * access_token = [result getSubStringByKey:@"access_token"];
+            NSString * access_token = [(NSDictionary *)[result getObject] objectForKey:@"access_token"];
             
             // Note: Must set acess token to sdk!
             NSLog(@"Access Token = %@", access_token);
@@ -121,11 +91,12 @@
     
     else if (methodOption == AKWBOPT_GET_STATUSES_HOME_TIMELINE){
         
+        
         NSLog(@"AKWBOPT_GET_STATUSES_HOME_TIMELINE");
         
-        //[[NSFileManager defaultManager] createFileAtPath:@"/Users/kent/Desktop/statuses.txt" contents:[[result getOriginString] dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+        [[NSFileManager defaultManager] createFileAtPath:@"/Users/mac/Desktop/statuses.txt" contents:[result originData] attributes:nil];
     
-    
+
     }
 
 
@@ -140,13 +111,13 @@
         if (result && result.isUseable)
         {
             
-            NSString * error_code = [result getSubStringByKey:@"error_code"];
-            NSString * request = [result getSubStringByKey:@"request"];
-            NSString * error = [result getSubStringByKey:@"error"];
+//            NSString * error_code = [result getSubStringByKey:@"error_code"];
+//            NSString * request = [result getSubStringByKey:@"request"];
+//            NSString * error = [result getSubStringByKey:@"error"];
             
             //[error compare:@"" options:NSCaseInsensitiveSearch]
             
-            NSLog(@"ERROR_CODE = %@\nREQUEST = %@\nERROR = %@",error_code, request, error);
+//            NSLog(@"ERROR_CODE = %@\nREQUEST = %@\nERROR = %@",error_code, request, error);
         }
     }
     else if (methodOption == AKWBOPT_POST_STATUSES_UPDATE)
